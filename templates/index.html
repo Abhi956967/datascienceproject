@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Quality Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="glass-card">
+    <h1>🍷 Wine Quality Prediction</h1>
+    <p class="subtitle">AI-powered wine quality analysis</p>
+
+    <form action="/predict" method="post" class="grid-form" onsubmit="showLoader()">
+
+        <input type="number" step="any" name="fixed_acidity" placeholder="Fixed Acidity" required>
+        <input type="number" step="any" name="volatile_acidity" placeholder="Volatile Acidity" required>
+
+        <input type="number" step="any" name="citric_acid" placeholder="Citric Acid" required>
+        <input type="number" step="any" name="residual_sugar" placeholder="Residual Sugar" required>
+
+        <input type="number" step="any" name="chlorides" placeholder="Chlorides" required>
+        <input type="number" step="any" name="free_sulfur_dioxide" placeholder="Free Sulfur Dioxide" required>
+
+        <input type="number" step="any" name="total_sulfur_dioxide" placeholder="Total Sulfur Dioxide" required>
+        <input type="number" step="any" name="density" placeholder="Density" required>
+
+        <input type="number" step="any" name="pH" placeholder="pH Level" required>
+        <input type="number" step="any" name="sulphates" placeholder="Sulphates" required>
+
+        <input type="number" step="any" name="alcohol" placeholder="Alcohol %" required class="full">
+
+        <button type="submit" class="btn-primary">Predict Quality</button>
+    </form>
+
+    <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+    <p>Analyzing wine chemistry using AI…</p>
+    </div>
+
+    <p class="interpretation">
+    This wine shows balanced chemical composition and is expected to perform well in sensory evaluation.
+    </p>
+
+</div>
+
+<footer>
+    Powered by Machine Learning • Built with Flask
+</footer>
+
+<script>
+
+function showLoader() {
+    document.querySelector('.grid-form').style.display = 'none';
+    document.getElementById('loader').classList.remove('hidden');
+}
+</script>
+
+<canvas id="impactChart"></canvas>
+
+
+</body>
+</html>
+
+
